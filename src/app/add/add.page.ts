@@ -3,6 +3,7 @@ import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { PictureService } from '../picture.service';
 import { Note } from '../../models/note.interface';
+import {Geolocation} from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-add',
@@ -15,9 +16,13 @@ export class AddPage implements OnInit {
   private uploading: boolean = false;
   private photo: string;
 
+  lat: any;
+  lng: any;
+
   constructor( 
     private formBuilder: FormBuilder, 
     private modal: ModalController,
+    public geo: Geolocation,
     private picture: PictureService 
   ) { 
 
@@ -34,17 +39,31 @@ export class AddPage implements OnInit {
     this.modal.dismiss();
   }
 
+  locate(){
+    this.geo.getCurrentPosition().then((resp) => {
+      this.lat = resp.coords.latitude,
+      this.lng = resp.coords.longitude,
+      console.log("lat" + resp.coords.latitude + "- long" + resp.coords.longitude)
+     }).catch((error) => {
+       console.log('Error getting location', error);
+     });
+  }
+
   submit() {
     // get data from form
     let name = this.addForm.controls.name.value;
     let note = this.addForm.controls.note.value;
     let date = new Date();
+    let latitude = this.lat;
+    let longitude = this.lng
     let image = (this.photo) ? this.photo : null;
     let noteData: Note = { 
       name: name, 
       date: date, 
       note: note,
-      image: image
+      image: image,
+      latitude: latitude,
+      longitude: longitude
     };
     this.modal.dismiss( noteData );
   }
