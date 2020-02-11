@@ -5,14 +5,14 @@
 export const environment = {
   production: false,
   firebase: {
-    apiKey: "AIzaSyDo9Ld7HuIJCEWXC5l0Pwnwmajb1pElF5Q",
-    authDomain: "notes-demo-d8c46.firebaseapp.com",
-    databaseURL: "https://notes-demo-d8c46.firebaseio.com",
-    projectId: "notes-demo-d8c46",
-    storageBucket: "notes-demo-d8c46.appspot.com",
-    messagingSenderId: "138020715402",
-    appId: "1:138020715402:web:744698db457c30e510e673",
-    measurementId: "G-CZG99TWSME"
+    apiKey: "AIzaSyCm7kXFrOO9E5Z0PlvFeJQvw1YNFhcM5_Q",
+    authDomain: "my-notes-app-f03f3.firebaseapp.com",
+    databaseURL: "https://my-notes-app-f03f3.firebaseio.com",
+    projectId: "my-notes-app-f03f3",
+    storageBucket: "my-notes-app-f03f3.appspot.com",
+    messagingSenderId: "964268399694",
+    appId: "1:964268399694:web:257d30f3d475ffd545371f",
+    measurementId: "G-3S7BFTVM85"
   }
 };
 
